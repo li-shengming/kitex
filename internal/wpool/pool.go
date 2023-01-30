@@ -76,7 +76,7 @@ func (p *Pool) GoCtx(ctx context.Context, task Task) {
 
 	// create new worker
 	atomic.AddInt32(&p.size, 1)
-	go func() {
+	func() {
 		defer func() {
 			if r := recover(); r != nil {
 				klog.Errorf("panic in wpool: error=%v: stack=%s", r, debug.Stack())
